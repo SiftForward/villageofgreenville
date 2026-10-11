@@ -255,11 +255,11 @@ export default function SourceHealthPage() {
           </div>
 
           <div className="inset-block">
-            <p className="font-sans text-sm font-semibold text-navy mb-2">Future automation</p>
+            <p className="font-sans text-sm font-semibold text-navy mb-2">Automated checks</p>
             <p className="font-sans text-sm text-warm-text leading-relaxed">
-              Sources marked high readiness are candidates for automated change detection in a future version
-              of this site. When a change is detected, it will enter a review queue — not the public record —
-              until a human review is complete.
+              The Legal Notices, Staff Directory and Boards &amp; Commissions pages are checked every morning.
+              Detected changes go to a review queue, not the public record, until a human approves them.
+              Other high-readiness sources are candidates for the same check.
             </p>
           </div>
         </aside>

@@ -137,7 +137,7 @@ export default function HomePage() {
                 Every claim on this site is tied to a source. Every source is labeled with a trust tier. When information is uncertain, incomplete, or in need of review, this site says so. The goal is a reliable reference — not a fast one.
               </p>
               <p>
-                This site is designed to grow over time, with future automation to monitor official Village sources and surface changes to the civic record.
+                A daily check watches the Village's Legal Notices, Staff Directory and Boards &amp; Commissions pages. Anything new is reviewed before it appears here.
               </p>
             </div>
           </div>

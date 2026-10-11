@@ -1,0 +1,62 @@
+name: Daily source check
+
+# Checks the Village of Greenville source pages every morning. When something changed,
+# it opens (or updates) one pull request with the proposed data updates. Merging that
+# pull request is the review step: Vercel then redeploys villageofgreenville.com.
+on:
+  schedule:
+    - cron: '17 11 * * *' # 6:17 AM Central (CDT); 5:17 AM in winter (CST)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: source-monitor
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Parser self-test
+        run: npm run monitor:test
+
+      - name: Check sources
+        id: monitor
+        continue-on-error: true
+        run: npm run monitor
+
+      - name: Make sure the site still builds with the new data
+        if: steps.monitor.outputs.changes != '0'
+        run: npm run build
+
+      - name: Open or update the review pull request
+        if: steps.monitor.outputs.changes != '0'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: auto/source-updates
+          delete-branch: true
+          add-paths: data/*.json
+          commit-message: 'Source check: proposed updates'
+          title: 'Source updates for review'
+          body-path: .monitor/summary.md
+          labels: source-update
+
+      - name: Fail the run if a source could not be checked
+        if: steps.monitor.outcome == 'failure'
+        run: |
+          cat .monitor/summary.md || true
+          echo "::error::One or more sources could not be checked. See the summary above."
+          exit 1

@@ -63,8 +63,8 @@ export default function WhatChangedPage() {
         </h1>
         <p className="font-sans text-lg text-warm-text leading-relaxed">
           A log of updates to this public record — source registrations, document indexing, civic data
-          verification, and corrections. Future automation will detect changes to official sources.
-          Publication will remain human-reviewed.
+          verification, and corrections. A daily check detects changes to official sources;
+          publication remains human-reviewed.
         </p>
       </div>
 
@@ -215,9 +215,9 @@ export default function WhatChangedPage() {
           <div className="inset-block">
             <p className="font-sans text-sm font-semibold text-navy mb-2">About this log</p>
             <p className="font-sans text-sm text-warm-text leading-relaxed">
-              This log is manually seeded for the initial version of this site. Future automation will
-              detect changes to registered official sources and surface them for human review before
-              publication in this record.
+              Early entries were added by hand. Since October 2026 a daily check of the Village's Legal
+              Notices, Staff Directory and Boards &amp; Commissions pages proposes new entries. Each one is
+              reviewed before it is published. Entries marked Auto-detected came from that check.
             </p>
           </div>
 

@@ -229,3 +229,31 @@ If information on this site is inaccurate or outdated, open an issue in this rep
 ---
 
 *Greenville, WI 54942 &middot; Community record, not government*
+
+---
+
+## Daily source check
+
+`.github/workflows/source-monitor.yml` runs every morning at about 6:17 AM Central (and on demand from the Actions tab). It:
+
+1. Reads the Village **Legal Notices & Postings**, **Staff Directory** and **Boards & Commissions** pages (`scripts/monitor/`).
+2. Writes proposed updates into `data/*.json`: new documents marked `auto_detected`, staff title changes and additions, Village Board changes, and one change-log entry per source.
+3. Opens or updates a single pull request, **Source updates for review**, on the branch `auto/source-updates`, and GitHub emails you.
+4. **Merging the pull request is the review step.** Vercel redeploys the site from `master`. Close the PR to reject the changes, or edit the files on the branch before merging.
+
+Rules the monitor follows:
+
+- It never infers adoption. New documents are `official_document_posted` with adoption not verified.
+- It never stores home addresses, phone numbers or emails, even though the official pages list them.
+- New Board members are added as `needs_review`. Commission membership is free text, so it is only fingerprinted, and a change is flagged in the PR for a manual check.
+- If a page can't be loaded or parsed (for example after a redesign), that source is skipped, nothing is overwritten, and the run fails so GitHub emails you.
+
+Commands:
+
+```bash
+npm run monitor        # check live sources and write proposed updates to data/
+npm run monitor:test   # parser checks against saved pages in scripts/monitor/fixtures/
+MONITOR_FIXTURES=scripts/monitor/fixtures npm run monitor   # dry run without network
+```
+
+One-time GitHub setting: **Settings → Actions → General → Workflow permissions →** "Read and write permissions" and "Allow GitHub Actions to create and approve pull requests".

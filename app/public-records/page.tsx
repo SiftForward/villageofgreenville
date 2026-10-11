@@ -73,7 +73,7 @@ export default function PublicRecordsPage() {
           <div className="mt-10 inset-block">
             <p className="font-sans text-sm font-semibold text-navy mb-2">About this index</p>
             <p className="font-sans text-sm text-warm-text leading-relaxed">
-              Records in this index are drawn from the Village of Greenville Legal Notices and Postings page. This index is manually seeded for this initial version. Future automation will monitor the source page for new document links.
+              Records in this index are drawn from the Village of Greenville Legal Notices and Postings page. A daily check adds newly posted documents, marked Auto-detected, after review. Their titles are shown as posted; contents and adoption status are not verified.
             </p>
           </div>
         </div>
@@ -138,9 +138,9 @@ export default function PublicRecordsPage() {
           </div>
 
           <div className="inset-block">
-            <p className="font-sans text-sm font-semibold text-navy mb-2">Future automation</p>
+            <p className="font-sans text-sm font-semibold text-navy mb-2">How this index is updated</p>
             <p className="font-sans text-sm text-warm-text leading-relaxed">
-              Planned: automated monitoring of the Legal Notices page for new document links, with a review step before records appear publicly. See the{' '}
+              Every morning a check reads the Legal Notices page for new document links. New links are proposed for review and only appear here once approved. See the{' '}
               <code className="text-xs font-mono bg-cream px-1 py-0.5 rounded">scripts/</code>{' '}
               directory in the project repository.
             </p>
