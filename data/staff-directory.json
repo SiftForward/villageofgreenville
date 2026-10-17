@@ -11,11 +11,11 @@
   {
     "id": "katrina-knuth",
     "name": "Katrina Knuth",
-    "title": "Interim Village Clerk",
+    "title": "Village Clerk",
     "department": "Administration",
     "email": null,
     "sourceId": "greenville-staff",
-    "lastVerified": "2026-05-01"
+    "lastVerified": "2026-10-17"
   },
   {
     "id": "lisa-beyer",
@@ -106,5 +106,50 @@
     "email": null,
     "sourceId": "greenville-staff",
     "lastVerified": "2026-05-01"
+  },
+  {
+    "id": "brielle-hastings",
+    "name": "Brielle Hastings",
+    "title": "Deputy Clerk / Admin Assistant",
+    "department": "Administration",
+    "email": null,
+    "sourceId": "greenville-staff",
+    "lastVerified": "2026-10-17"
+  },
+  {
+    "id": "ryan-geiger",
+    "name": "Ryan Geiger",
+    "title": "Commercial Building Inspector",
+    "department": "Building Inspection",
+    "email": null,
+    "sourceId": "greenville-staff",
+    "lastVerified": "2026-10-17"
+  },
+  {
+    "id": "holly-arft",
+    "name": "Holly Arft",
+    "title": "Utility Billing Clerk",
+    "department": "Utilities",
+    "email": null,
+    "sourceId": "greenville-staff",
+    "lastVerified": "2026-10-17"
+  },
+  {
+    "id": "julie-routhieaux",
+    "name": "Julie Routhieaux",
+    "title": "Administrative Assistant",
+    "department": "Public Works",
+    "email": null,
+    "sourceId": "greenville-staff",
+    "lastVerified": "2026-10-17"
+  },
+  {
+    "id": "sarah-school",
+    "name": "Sarah School",
+    "title": "Parks & Recreation Program Manager",
+    "department": "Parks & Recreation",
+    "email": null,
+    "sourceId": "greenville-staff",
+    "lastVerified": "2026-10-17"
   }
 ]

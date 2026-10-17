@@ -37,7 +37,7 @@
     "trustTier": "primary_official",
     "monitoringMethod": "html_change_detection",
     "note": null,
-    "lastChecked": "2026-05-01"
+    "lastChecked": "2026-10-17"
   },
   {
     "id": "greenville-legal-notices",
@@ -47,7 +47,7 @@
     "trustTier": "primary_official",
     "monitoringMethod": "document_link_detection",
     "note": null,
-    "lastChecked": "2026-05-01"
+    "lastChecked": "2026-10-17"
   },
   {
     "id": "greenville-elections",
