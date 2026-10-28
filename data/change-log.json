@@ -1,5 +1,27 @@
 [
   {
+    "id": "chg-009",
+    "changeTitle": "Staff Directory: 4 added, 1 updated, 1 removed",
+    "sourceId": "greenville-staff",
+    "changeType": "status_updated",
+    "dateDetected": "2026-10-28",
+    "publicStatus": "published",
+    "reviewStatus": "auto_detected",
+    "summary": "Detected by the automated source check and approved for publication. Travis Parish (Administrator) is no longer listed in the Staff Directory; Katrina Knuth: “Interim Village Clerk” → “Village Clerk”; Brielle Hastings, Deputy Clerk / Admin Assistant (Administration); Ryan Geiger, Commercial Building Inspector (Building Inspection); Holly Arft, Utility Billing Clerk (Utilities); Julie Routhieaux, Administrative Assistant (Public Works).",
+    "linkToSource": "https://www.townofgreenville.com/government/staff_directory.php"
+  },
+  {
+    "id": "chg-008",
+    "changeTitle": "Legal Notices & Postings: 43 added, 9 updated",
+    "sourceId": "greenville-legal-notices",
+    "changeType": "document_indexed",
+    "dateDetected": "2026-10-28",
+    "publicStatus": "published",
+    "reviewStatus": "auto_detected",
+    "summary": "Detected by the automated source check and approved for publication. NOTICE OF VILLAGE OF GREENVILLE PUBLIC TEST OF VOTING EQUIPMENT (document date 2026-07-13); Resolution No. 34-26 Engineering Plans Phase 1 - Harvest Ridge (document date 2026-10-13); Resolution No. 35-26 Preliminary Plat - Harvest Ridge (document date 2026-10-13); Resolution No. 36-26 Condo Plat - ATW Hanger 111123500 (document date 2026-10-13); Resolution No. 37-26 JRB TID #3 Approval (document date 2026-09-29); Resolution No. 31-26 JRB Annual Mtg Resolution (document date 2026-09-15); Resolution No. 33-26 Escrow Release Developers Agreement - Encore initial const (document date 2026-09-15); Resolution No. 32-26 TID #3 Creation Project Plan and Boundaries (document date 2026-09-15); Resolution No. 30-26 PC TID #3 Creation Project Plan and Boundaries (document date 2026-08-28); Resolution No. 29-26 Support for CTH GV and Mayflower roundabout (document date 2026-08-14); Resolution No. 28-26 PUD Special Exception_APEX 111089006 (document date 2026-08-14); Resolution No. 24-26 Special Exception PUD_New Creations 111027201 (document date 2026-07-14). …and 40 more.",
+    "linkToSource": "https://www.townofgreenville.com/government/legal_notices_and_postings.php"
+  },
+  {
     "id": "chg-007",
     "changeTitle": "Staff Directory indexed — 12 Village staff contacts across 7 departments",
     "sourceId": "greenville-staff",
