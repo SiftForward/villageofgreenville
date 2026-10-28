@@ -1,0 +1,103 @@
+{
+  "electionName": "General Election",
+  "electionDate": "2026-11-03",
+  "candidateListUpdated": "2026-10-06",
+  "retrieved": "2026-10-27",
+  "pollsOpen": "7:00 a.m.",
+  "pollsClose": "8:00 p.m.",
+  "clerkPhone": "920-757-5151",
+  "pollingPlace": {
+    "name": "Shepherd of the Hills Lutheran Church",
+    "address": "N1615 Meadowview Dr., Greenville, WI 54942",
+    "scope": "All Village wards (1–10) vote here on Election Day.",
+    "note": "The Village's elections page also prints this address as “1615 Meadow View Drive.” The Wisconsin Elections Commission's polling place file lists N1615 Meadowview Dr. If in doubt, confirm with MyVote or the Village Clerk."
+  },
+  "inPersonAbsentee": {
+    "location": "Greenville Village Hall",
+    "address": "W6860 Parkview Drive, Greenville, WI 54942",
+    "hours": [
+      "Monday–Thursday (October 20–29): 7:00 a.m.–4:00 p.m.",
+      "Friday, October 23: 8:00 a.m.–12:00 p.m.",
+      "Friday, October 30: 8:00 a.m.–5:00 p.m."
+    ]
+  },
+  "deadlines": [
+    {
+      "label": "Register to vote in person at the municipal clerk's office",
+      "when": "Friday, October 30, 5:00 p.m. (or close of business, whichever is later)",
+      "sourceId": "wec-election-hub"
+    },
+    {
+      "label": "Absentee ballots must be delivered to the polling place or central count location",
+      "when": "Tuesday, November 3, 8:00 p.m.",
+      "sourceId": "wec-election-hub"
+    }
+  ],
+  "contests": [
+    {
+      "id": "governor-lieutenant-governor",
+      "office": "Governor and Lieutenant Governor",
+      "scope": "statewide",
+      "note": "Candidates for the two offices appear on the ballot as a ticket.",
+      "candidates": [
+        { "name": "Tom Tiffany", "runningMate": "David Varnam", "party": "Republican" },
+        { "name": "David Crowley", "runningMate": "Sarah Godlewski", "party": "Democratic" }
+      ]
+    },
+    {
+      "id": "attorney-general",
+      "office": "Attorney General",
+      "scope": "statewide",
+      "note": null,
+      "candidates": [
+        { "name": "Eric Toney", "party": "Republican" },
+        { "name": "Josh Kaul", "party": "Democratic" }
+      ]
+    },
+    {
+      "id": "secretary-of-state",
+      "office": "Secretary of State",
+      "scope": "statewide",
+      "note": null,
+      "candidates": [
+        { "name": "Jay Schroeder", "party": "Republican" },
+        { "name": "JoCasta Zamarripa", "party": "Democratic" },
+        { "name": "Pete Karas", "party": "Wisconsin Green" }
+      ]
+    },
+    {
+      "id": "state-treasurer",
+      "office": "State Treasurer",
+      "scope": "statewide",
+      "note": null,
+      "candidates": [
+        { "name": "John S. Leiber", "party": "Republican" },
+        { "name": "Yee Leng Xiong", "party": "Democratic" }
+      ]
+    },
+    {
+      "id": "outagamie-sheriff",
+      "office": "Outagamie County Sheriff",
+      "scope": "county",
+      "note": "Only one candidate is listed.",
+      "candidates": [{ "name": "Clint C. Kriewaldt", "party": "Republican" }]
+    },
+    {
+      "id": "outagamie-clerk-of-circuit-court",
+      "office": "Outagamie County Clerk of Circuit Court",
+      "scope": "county",
+      "note": "Only one candidate is listed.",
+      "candidates": [{ "name": "Diane Leith", "party": "Republican" }]
+    }
+  ],
+  "questions": [
+    { "number": 1, "title": "Partial Veto" },
+    { "number": 2, "title": "Freedom to Gather in Places of Worship During an Emergency" },
+    { "number": 3, "title": "Governmental Entity Discrimination Prohibited" }
+  ],
+  "addressDependent": [
+    "U.S. Representative in Congress (Congressional districts 1–8)",
+    "State Senator (the odd-numbered districts are up this year)",
+    "State Representative to the Assembly (all 99 districts)"
+  ]
+}

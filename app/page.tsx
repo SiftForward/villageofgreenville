@@ -1,11 +1,14 @@
 import Link from 'next/link'
-import { getSources, getCivicRoster, getTimeline, getDocuments, getLastCheckedDate, formatDate } from '@/lib/data'
+import { getSources, getCivicRoster, getTimeline, getDocuments, getLastCheckedDate, formatDate, getBallotGuide, isBallotElectionOver } from '@/lib/data'
 import StatusBadge, { DocumentStatusBadge } from '@/components/StatusBadge'
 import SourceBadge from '@/components/SourceBadge'
 
 export const metadata = {
   title: 'VillageOfGreenville.com — The Community Record',
 }
+
+// Re-render hourly so the election banner retires itself after Election Day.
+export const revalidate = 3600
 
 const trackingItems = [
   {
@@ -76,9 +79,25 @@ export default function HomePage() {
   const recentTimeline = timeline.slice(-3).reverse()
   const previewMembers = civicRoster.slice(0, 3)
   const boardsSource = sources.find((s) => s.id === 'greenville-boards')
+  const electionOver = isBallotElectionOver()
+  const electionDay = formatDate(getBallotGuide().electionDate)
 
   return (
     <div>
+      {/* ── Election banner (retires after Election Day) ── */}
+      {!electionOver && (
+        <section className="bg-navy">
+          <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-1">
+            <p className="font-sans text-sm text-warm-white">
+              <span className="font-semibold">Election Day is {electionDay}.</span> See what&rsquo;s on the ballot, where to vote and the key deadlines.
+            </p>
+            <Link href="/ballot" className="font-sans text-sm font-semibold text-warm-white underline underline-offset-2 hover:text-civic-green-muted transition-colors">
+              On your ballot &rarr;
+            </Link>
+          </div>
+        </section>
+      )}
+
       {/* ── Hero / Masthead ── */}
       <section className="relative bg-cream grain-overlay overflow-hidden border-b border-warm-border">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">

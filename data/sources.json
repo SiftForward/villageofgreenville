@@ -198,5 +198,35 @@
     "monitoringMethod": null,
     "note": "Referenced in Resolution No. 6-26. The plan document itself was adopted as part of that resolution.",
     "lastChecked": "2026-05-01"
+  },
+  {
+    "id": "wec-2026-general-election",
+    "name": "Wisconsin Elections Commission — 2026 General Election Resources",
+    "url": "https://elections.wi.gov/elections",
+    "type": "state_data",
+    "trustTier": "primary_official",
+    "monitoringMethod": "manual",
+    "note": "Publishes the official contest and candidate file and the polling place listing for the November 3, 2026 General Election. Candidates and statewide questions on this site are read from that file. Registered write-in candidates are listed separately by the Commission.",
+    "lastChecked": null
+  },
+  {
+    "id": "wec-election-hub",
+    "name": "Wisconsin Elections Commission — 2026 Election Information Hub",
+    "url": "https://elections.wi.gov/2026",
+    "type": "state_official_reference",
+    "trustTier": "primary_official",
+    "monitoringMethod": "manual",
+    "note": "Official election calendar and voter deadlines.",
+    "lastChecked": null
+  },
+  {
+    "id": "myvote-whats-on-my-ballot",
+    "name": "MyVote Wisconsin — What's On My Ballot",
+    "url": "https://myvote.wi.gov/en-us/Whats-On-My-Ballot",
+    "type": "state_official_lookup",
+    "trustTier": "primary_official",
+    "monitoringMethod": null,
+    "note": "Sample ballots are determined by address. This site does not collect resident addresses — link residents to MyVote directly.",
+    "lastChecked": null
   }
 ]

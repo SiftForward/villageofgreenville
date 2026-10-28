@@ -7,6 +7,7 @@ import sourceHealthData from '@/data/source-health.json'
 import changeLogData from '@/data/change-log.json'
 import growthSignalsData from '@/data/growth-signals.json'
 import staffDirectoryData from '@/data/staff-directory.json'
+import ballotGuideData from '@/data/ballot-2026-11.json'
 
 import type {
   Source,
@@ -18,6 +19,7 @@ import type {
   ChangeLogEntry,
   GrowthSignal,
   StaffMember,
+  BallotGuide,
 } from '@/types'
 
 // ─── Sources ─────────────────────────────────────────────────────────────────
@@ -133,4 +135,16 @@ export function getStaffByDepartment(): Record<string, StaffMember[]> {
     },
     {} as Record<string, StaffMember[]>
   )
+}
+
+// ─── Ballot guide ─────────────────────────────────────────────────────────────
+
+export function getBallotGuide(): BallotGuide {
+  return ballotGuideData as BallotGuide
+}
+
+/** True once Election Day has passed in Central time. Pages using this re-render hourly. */
+export function isBallotElectionOver(): boolean {
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago' }).format(new Date())
+  return today > getBallotGuide().electionDate
 }

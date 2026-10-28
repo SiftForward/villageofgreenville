@@ -203,3 +203,51 @@ export interface GrowthSignal {
   stats: GrowthDataPoint[]
   pendingNote: string | null
 }
+
+// ─── Ballot guide ─────────────────────────────────────────────────────────────
+
+export interface BallotCandidate {
+  name: string
+  /** Lieutenant Governor candidate on the same ticket, when the office has one. */
+  runningMate?: string
+  party: string
+}
+
+export interface BallotContest {
+  id: string
+  office: string
+  /** Who sees this contest on their ballot. */
+  scope: 'statewide' | 'county'
+  note: string | null
+  candidates: BallotCandidate[]
+}
+
+export interface BallotQuestion {
+  number: number
+  title: string
+}
+
+export interface BallotDeadline {
+  label: string
+  when: string
+  sourceId: string
+}
+
+export interface BallotGuide {
+  electionName: string
+  /** YYYY-MM-DD */
+  electionDate: string
+  /** Date the Elections Commission last updated its contest file. */
+  candidateListUpdated: string
+  /** Date this site last read the official sources. */
+  retrieved: string
+  pollsOpen: string
+  pollsClose: string
+  clerkPhone: string
+  pollingPlace: { name: string; address: string; scope: string; note: string }
+  inPersonAbsentee: { location: string; address: string; hours: string[] }
+  deadlines: BallotDeadline[]
+  contests: BallotContest[]
+  questions: BallotQuestion[]
+  addressDependent: string[]
+}

@@ -137,15 +137,6 @@ export default function PublicRecordsPage() {
               ))}
             </div>
           </div>
-
-          <div className="inset-block">
-            <p className="font-sans text-sm font-semibold text-navy mb-2">How this index is updated</p>
-            <p className="font-sans text-sm text-warm-text leading-relaxed">
-              Every morning a check reads the Legal Notices page for new document links. New links are proposed for review and only appear here once approved. See the{' '}
-              <code className="text-xs font-mono bg-cream px-1 py-0.5 rounded">scripts/</code>{' '}
-              directory in the project repository.
-            </p>
-          </div>
         </aside>
       </div>
     </div>

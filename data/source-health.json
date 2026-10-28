@@ -158,5 +158,29 @@
     "reviewStatus": "reviewed",
     "lastReviewed": "2026-05-01",
     "publicNotes": "Referenced in Resolution No. 6-26 (2026). Document posted on Legal Notices page."
+  },
+  {
+    "sourceId": "wec-2026-general-election",
+    "publisher": "Wisconsin Elections Commission",
+    "automationReadiness": "medium",
+    "reviewStatus": "registered",
+    "lastReviewed": null,
+    "publicNotes": "Official contest and candidate spreadsheet and polling place listing. Updated by the Commission as candidates and locations change. Read by hand for the November 2026 ballot guide; no automation planned."
+  },
+  {
+    "sourceId": "wec-election-hub",
+    "publisher": "Wisconsin Elections Commission",
+    "automationReadiness": "low",
+    "reviewStatus": "registered",
+    "lastReviewed": null,
+    "publicNotes": "Official election calendar. Used for voter deadlines. No automation planned."
+  },
+  {
+    "sourceId": "myvote-whats-on-my-ballot",
+    "publisher": "Wisconsin Elections Commission",
+    "automationReadiness": "low",
+    "reviewStatus": "registered",
+    "lastReviewed": null,
+    "publicNotes": "Address-lookup tool for a personal sample ballot. This site links residents to MyVote directly rather than replicating its data. No automation planned."
   }
 ]
