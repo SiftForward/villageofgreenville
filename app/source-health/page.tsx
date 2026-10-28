@@ -268,6 +268,8 @@ export default function SourceHealthPage() {
               The Legal Notices, Staff Directory and Boards &amp; Commissions pages are checked once a week.
               {lastChecked && <> The most recent check was on {formatDate(lastChecked)}.</>}{' '}
               Detected changes go to a review queue, not the public record, until a human approves them.
+              When a check finds nothing changed, only the &ldquo;last checked&rdquo; and &ldquo;last verified&rdquo; dates
+              are refreshed automatically; no names, titles, documents or other content are published without review.
               Other high-readiness sources are candidates for the same check.
             </p>
           </div>

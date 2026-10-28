@@ -75,7 +75,7 @@ export default function AboutPage() {
                 {[
                   'AI-generated summaries require review before appearing on public pages.',
                   'AI does not auto-publish factual claims about individuals, votes, or documents.',
-                  'Source verification is a human step, not an automated one.',
+                  'Judging whether a source is trustworthy is a human step. Automated checks detect changes and, when nothing has changed, refresh the “last checked” and “last verified” dates; they never publish new content.',
                   'AI-assisted content is clearly distinguished from primary source material.',
                 ].map((item, idx) => (
                   <li key={idx} className="font-sans text-sm text-warm-text flex items-start gap-2">

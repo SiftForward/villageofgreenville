@@ -26,7 +26,7 @@
   {
     "id": "review-required",
     "title": "Public-facing summaries require review before publication",
-    "body": "No automated process publishes content directly to this site without a review step. Changes to the public record, new document summaries, and updates to the civic roster are verified against official sources before appearing on public pages.",
+    "body": "No automated process publishes new content to this site without a review step. New documents, name or title changes, roster changes, and summaries are checked against official sources and approved by a person before they appear on public pages. There is one narrow exception: when an automated check confirms that an official page still says what we have recorded, it refreshes the “last checked” and “last verified” dates so the site shows when it was last confirmed. Those date refreshes change no names, titles, documents, or other content.",
     "icon": "review"
   },
   {

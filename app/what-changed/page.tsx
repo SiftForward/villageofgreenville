@@ -228,7 +228,9 @@ export default function WhatChangedPage() {
             <p className="font-sans text-sm text-warm-text leading-relaxed">
               Every published entry has been reviewed by a human before appearing in this record.
               Automated detection will never publish directly to this log — it will always enter a
-              review queue first.
+              review queue first. The one thing that updates without review is a &ldquo;last checked&rdquo; or
+              &ldquo;last verified&rdquo; date, refreshed when an automated check confirms an official page still says
+              what we recorded.
             </p>
           </div>
         </aside>
