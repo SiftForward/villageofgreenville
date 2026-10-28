@@ -1,11 +1,13 @@
-name: Daily source check
+name: Weekly source check
 
-# Checks the Village of Greenville source pages every morning. When something changed,
+# Checks the Village of Greenville source pages once a week. When something changed,
 # it opens (or updates) one pull request with the proposed data updates. Merging that
 # pull request is the review step: Vercel then redeploys villageofgreenville.com.
+# When nothing changed it only refreshes the "last checked" dates and publishes that
+# directly, so the site never looks stale and there is no pull request to merge.
 on:
   schedule:
-    - cron: '17 11 * * *' # 6:17 AM Central (CDT); 5:17 AM in winter (CST)
+    - cron: '17 11 * * 3' # Wednesdays, 6:17 AM Central (CDT); 5:17 AM in winter (CST)
   workflow_dispatch: {}
 
 permissions:
@@ -25,7 +27,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - run: npm ci
@@ -38,12 +40,27 @@ jobs:
         continue-on-error: true
         run: npm run monitor
 
+      # `changes` is empty when the monitor crashed before reporting; the steps below
+      # then skip, and the last step fails the run with the real problem.
       - name: Make sure the site still builds with the new data
-        if: steps.monitor.outputs.changes != '0'
+        if: steps.monitor.outputs.changes != ''
         run: npm run build
 
+      - name: Publish refreshed check dates (nothing changed)
+        if: steps.monitor.outputs.changes == '0'
+        run: |
+          if [ -z "$(git status --porcelain -- data)" ]; then
+            echo "Nothing to publish."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/*.json
+          git commit -m "Source check: no changes (check dates refreshed)"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+
       - name: Open or update the review pull request
-        if: steps.monitor.outputs.changes != '0'
+        if: steps.monitor.outputs.changes != '' && steps.monitor.outputs.changes != '0'
         uses: peter-evans/create-pull-request@v7
         with:
           branch: auto/source-updates

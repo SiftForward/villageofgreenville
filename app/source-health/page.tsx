@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getSourceWithHealth } from '@/lib/data'
+import { getSourceWithHealth, getLastCheckedDate, formatDate } from '@/lib/data'
 import SourceBadge from '@/components/SourceBadge'
 import { AutomationBadge, RegistryStatusBadge } from '@/components/StatusBadge'
 
@@ -20,6 +20,7 @@ const publisherOrder = [
 
 export default function SourceHealthPage() {
   const sourcesWithHealth = getSourceWithHealth()
+  const lastChecked = getLastCheckedDate()
 
   const reviewedCount = sourcesWithHealth.filter(
     ({ health }) => health?.reviewStatus === 'reviewed'
@@ -157,6 +158,13 @@ export default function SourceHealthPage() {
                             <span className="text-navy font-medium">{health.lastReviewed}</span>
                           </span>
                         )}
+                        {/* Automated checks keep this current; it is listed separately once it differs from the review date. */}
+                        {source.lastChecked && source.lastChecked !== health?.lastReviewed && (
+                          <span>
+                            Last checked:{' '}
+                            <span className="text-navy font-medium">{source.lastChecked}</span>
+                          </span>
+                        )}
                       </div>
                       {health?.publicNotes && (
                         <p className="font-sans text-sm text-warm-text leading-relaxed">
@@ -257,7 +265,8 @@ export default function SourceHealthPage() {
           <div className="inset-block">
             <p className="font-sans text-sm font-semibold text-navy mb-2">Automated checks</p>
             <p className="font-sans text-sm text-warm-text leading-relaxed">
-              The Legal Notices, Staff Directory and Boards &amp; Commissions pages are checked every morning.
+              The Legal Notices, Staff Directory and Boards &amp; Commissions pages are checked once a week.
+              {lastChecked && <> The most recent check was on {formatDate(lastChecked)}.</>}{' '}
               Detected changes go to a review queue, not the public record, until a human approves them.
               Other high-readiness sources are candidates for the same check.
             </p>

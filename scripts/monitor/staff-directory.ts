@@ -88,7 +88,8 @@ export async function run(): Promise<Finding[]> {
       })
       next.push({ ...s, title: p.title, lastVerified: date })
     } else {
-      next.push(s)
+      // Still listed and unchanged: confirmed against the official page today.
+      next.push({ ...s, lastVerified: date })
     }
   }
 
@@ -111,6 +112,6 @@ export async function run(): Promise<Finding[]> {
     })
   }
 
-  if (findings.length) writeJson('staff-directory.json', next)
+  writeJson('staff-directory.json', next)
   return findings
 }

@@ -1,12 +1,17 @@
 /**
- * Daily source monitor — entry point.
+ * Source monitor — entry point.
  *
  *   npx tsx scripts/monitor/run.ts
  *
  * Checks the Village sources, writes proposed updates into data/*.json, adds a
  * change-log entry per source that changed, and writes .monitor/summary.md.
- * In GitHub Actions the changed data files become a pull request; merging it is
- * the human review step that publishes them (see .github/workflows/source-monitor.yml).
+ * In GitHub Actions, content changes become a pull request; merging it is the human
+ * review step that publishes them (see .github/workflows/source-monitor.yml).
+ *
+ * Every source that is read successfully also gets its "last checked" date (and
+ * confirmed records their "last verified" date) stamped, even when nothing changed,
+ * so the site never looks stale. A run with only date stamps reports 0 changes and
+ * the workflow publishes it directly.
  *
  * A source that fails to load or parse is reported and skipped. Its data is left
  * untouched, and the run exits non-zero so the failure is visible.
@@ -62,6 +67,9 @@ async function main() {
 
   for (const m of MONITORS) {
     const r = results.find((x) => x.name === m.name)!
+    // A source that was read and parsed counts as checked, whether or not it changed.
+    const src = sources.find((s) => s.id === m.sourceId)
+    if (src && !r.error) src.lastChecked = date
     const dataChanges = r.findings.filter((f) => f.kind !== 'needs_review')
     if (!dataChanges.length) continue
     const counts = (['added', 'updated', 'removed'] as const)
@@ -79,17 +87,13 @@ async function main() {
       dateDetected: date,
       publicStatus: 'published',
       reviewStatus: 'auto_detected',
-      summary: `Detected by the daily source check and approved for publication. ${items.map((i) => i.replace(/\.$/, '')).join('; ')}.${more}`,
+      summary: `Detected by the automated source check and approved for publication. ${items.map((i) => i.replace(/\.$/, '')).join('; ')}.${more}`,
       linkToSource: m.sourceUrl,
     })
-    const src = sources.find((s) => s.id === m.sourceId)
-    if (src) src.lastChecked = date
   }
 
-  if (newEntries.length) {
-    writeJson('change-log.json', [...newEntries.reverse(), ...log])
-    writeJson('sources.json', sources)
-  }
+  if (newEntries.length) writeJson('change-log.json', [...newEntries.reverse(), ...log])
+  writeJson('sources.json', sources)
 
   // Pull-request summary.
   const lines: string[] = [`## Source check, ${date}`, '']

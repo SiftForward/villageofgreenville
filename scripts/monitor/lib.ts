@@ -1,5 +1,5 @@
 /**
- * Shared helpers for the daily source monitor.
+ * Shared helpers for the source monitor.
  *
  * Fetching: live pages are fetched over HTTPS. Set MONITOR_FIXTURES=<dir> to read
  * saved HTML from that directory instead (used by `npm run monitor:test`).
@@ -14,6 +14,8 @@ export const DATA = path.join(ROOT, 'data')
 const USER_AGENT =
   'VillageOfGreenville.com source monitor (independent community record; +https://villageofgreenville.com)'
 
+const FETCH_TIMEOUT_MS = 30_000
+
 export function today(): string {
   // Date in America/Chicago so a run at 6am local is stamped with the local date.
   return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago' }).format(new Date())
@@ -26,12 +28,16 @@ export async function fetchHtml(url: string, fixtureName: string): Promise<strin
   let lastError: unknown
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
-      const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } })
+      // Without a timeout a hung server would stall the run until the job limit.
+      const res = await fetch(url, {
+        headers: { 'User-Agent': USER_AGENT },
+        signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+      })
       if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`)
       return await res.text()
     } catch (err) {
       lastError = err
-      await new Promise((r) => setTimeout(r, attempt * 5000))
+      if (attempt < 3) await new Promise((r) => setTimeout(r, attempt * 5000))
     }
   }
   throw new Error(`Failed to fetch ${url}: ${String(lastError)}`)

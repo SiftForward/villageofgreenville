@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getSources, getCivicRoster, getTimeline, getDocuments } from '@/lib/data'
+import { getSources, getCivicRoster, getTimeline, getDocuments, getLastCheckedDate, formatDate } from '@/lib/data'
 import StatusBadge, { DocumentStatusBadge } from '@/components/StatusBadge'
 import SourceBadge from '@/components/SourceBadge'
 
@@ -67,6 +67,7 @@ const editorialPromises = [
 
 export default function HomePage() {
   const sources = getSources()
+  const lastChecked = getLastCheckedDate()
   const civicRoster = getCivicRoster()
   const timeline = getTimeline()
   const documents = getDocuments()
@@ -137,7 +138,8 @@ export default function HomePage() {
                 Every claim on this site is tied to a source. Every source is labeled with a trust tier. When information is uncertain, incomplete, or in need of review, this site says so. The goal is a reliable reference — not a fast one.
               </p>
               <p>
-                A daily check watches the Village's Legal Notices, Staff Directory and Boards &amp; Commissions pages. Anything new is reviewed before it appears here.
+                A weekly check watches the Village's Legal Notices, Staff Directory and Boards &amp; Commissions pages. Anything new is reviewed before it appears here.
+                {lastChecked && <> Last checked {formatDate(lastChecked)}.</>}
               </p>
             </div>
           </div>

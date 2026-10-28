@@ -30,6 +30,22 @@ export function getSourceById(id: string): Source | undefined {
   return (sourcesData as Source[]).find((s) => s.id === id)
 }
 
+/** Most recent date any source was checked, as stored (YYYY-MM-DD), or null if none. */
+export function getLastCheckedDate(): string | null {
+  const dates = (sourcesData as Source[]).map((s) => s.lastChecked).filter((d): d is string => !!d)
+  return dates.length ? dates.reduce((a, b) => (a > b ? a : b)) : null
+}
+
+/** "2026-10-28" → "October 28, 2026". Parsed as UTC so the day never shifts. */
+export function formatDate(iso: string): string {
+  return new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  })
+}
+
 // ─── Civic roster ─────────────────────────────────────────────────────────────
 
 export function getCivicRoster(): CivicMember[] {

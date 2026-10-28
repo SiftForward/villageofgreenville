@@ -101,7 +101,8 @@ export async function run(): Promise<Finding[]> {
         lastVerified: date,
       })
     } else {
-      next.push(r)
+      // Still listed and unchanged: confirmed against the official page today.
+      next.push({ ...r, lastVerified: date })
     }
   }
 
@@ -126,12 +127,10 @@ export async function run(): Promise<Finding[]> {
     })
   }
 
-  if (findings.length) {
-    // Keep the President first, then trustees in the order the Village lists them.
-    const order = board.map((b) => norm(b.name))
-    next.sort((a, b) => order.indexOf(norm(a.name)) - order.indexOf(norm(b.name)))
-    writeJson('civic-roster.json', next)
-  }
+  // Keep the President first, then trustees in the order the Village lists them.
+  const order = board.map((b) => norm(b.name))
+  next.sort((a, b) => order.indexOf(norm(a.name)) - order.indexOf(norm(b.name)))
+  writeJson('civic-roster.json', next)
 
   // Commission membership: fingerprint only, flag for manual review.
   const state: MonitorState = (() => {

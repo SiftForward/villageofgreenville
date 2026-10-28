@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getChangeLog, getSourceById } from '@/lib/data'
+import { getChangeLog, getSourceById, getLastCheckedDate, formatDate } from '@/lib/data'
 import type { ChangeType, ChangeReviewStatus } from '@/types'
 
 export const metadata: Metadata = {
@@ -50,6 +50,7 @@ const reviewStatusConfig: Record<ChangeReviewStatus, { label: string; classes: s
 
 export default function WhatChangedPage() {
   const entries = getChangeLog()
+  const lastChecked = getLastCheckedDate()
   const humanReviewedCount = entries.filter((e) => e.reviewStatus === 'human_reviewed').length
 
   return (
@@ -63,7 +64,7 @@ export default function WhatChangedPage() {
         </h1>
         <p className="font-sans text-lg text-warm-text leading-relaxed">
           A log of updates to this public record — source registrations, document indexing, civic data
-          verification, and corrections. A daily check detects changes to official sources;
+          verification, and corrections. A weekly check detects changes to official sources;
           publication remains human-reviewed.
         </p>
       </div>
@@ -215,9 +216,10 @@ export default function WhatChangedPage() {
           <div className="inset-block">
             <p className="font-sans text-sm font-semibold text-navy mb-2">About this log</p>
             <p className="font-sans text-sm text-warm-text leading-relaxed">
-              Early entries were added by hand. Since October 2026 a daily check of the Village's Legal
+              Early entries were added by hand. Since October 2026 a weekly check of the Village's Legal
               Notices, Staff Directory and Boards &amp; Commissions pages proposes new entries. Each one is
               reviewed before it is published. Entries marked Auto-detected came from that check.
+              {lastChecked && <> The most recent check was on {formatDate(lastChecked)}.</>}
             </p>
           </div>
 

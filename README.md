@@ -232,14 +232,15 @@ If information on this site is inaccurate or outdated, open an issue in this rep
 
 ---
 
-## Daily source check
+## Weekly source check
 
-`.github/workflows/source-monitor.yml` runs every morning at about 6:17 AM Central (and on demand from the Actions tab). It:
+`.github/workflows/source-monitor.yml` runs once a week, Wednesdays at about 6:17 AM Central (GitHub may start it a few hours late), and on demand from the Actions tab. The Village pages rarely change, so weekly is plenty; to change the cadence edit the `cron` line, and update the "weekly" wording on the home, Public Records, What Changed and Source Health pages. It:
 
 1. Reads the Village **Legal Notices & Postings**, **Staff Directory** and **Boards & Commissions** pages (`scripts/monitor/`).
 2. Writes proposed updates into `data/*.json`: new documents marked `auto_detected`, staff title changes and additions, Village Board changes, and one change-log entry per source.
-3. Opens or updates a single pull request, **Source updates for review**, on the branch `auto/source-updates`, and GitHub emails you.
+3. If anything changed, opens or updates a single pull request, **Source updates for review**, on the branch `auto/source-updates`, and GitHub emails you.
 4. **Merging the pull request is the review step.** Vercel redeploys the site from `master`. Close the PR to reject the changes, or edit the files on the branch before merging.
+5. If nothing changed, there is no pull request. The run only refreshes the "last checked" dates (`lastChecked` on sources, `lastVerified` on staff and Board records still listed) and commits that straight to `master`, so the site never looks stale. Real content is never published this way.
 
 Rules the monitor follows:
 

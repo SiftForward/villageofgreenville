@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getDocuments, getSources } from '@/lib/data'
+import { getDocuments, getSources, formatDate } from '@/lib/data'
 import DocumentIndex from '@/components/DocumentIndex'
 import SourceBadge from '@/components/SourceBadge'
 import StatusBadge from '@/components/StatusBadge'
@@ -73,7 +73,8 @@ export default function PublicRecordsPage() {
           <div className="mt-10 inset-block">
             <p className="font-sans text-sm font-semibold text-navy mb-2">About this index</p>
             <p className="font-sans text-sm text-warm-text leading-relaxed">
-              Records in this index are drawn from the Village of Greenville Legal Notices and Postings page. A daily check adds newly posted documents, marked Auto-detected, after review. Their titles are shown as posted; contents and adoption status are not verified.
+              Records in this index are drawn from the Village of Greenville Legal Notices and Postings page. A weekly check adds newly posted documents, marked Auto-detected, after review. Their titles are shown as posted; contents and adoption status are not verified.
+              {legalNoticesSource?.lastChecked && <> Last checked {formatDate(legalNoticesSource.lastChecked)}.</>}
             </p>
           </div>
         </div>
