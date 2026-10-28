@@ -1,21 +1,12 @@
 [
   {
-    "id": "travis-parish",
-    "name": "Travis Parish",
-    "title": "Administrator",
-    "department": "Administration",
-    "email": null,
-    "sourceId": "greenville-staff",
-    "lastVerified": "2026-05-01"
-  },
-  {
     "id": "katrina-knuth",
     "name": "Katrina Knuth",
-    "title": "Interim Village Clerk",
+    "title": "Village Clerk",
     "department": "Administration",
     "email": null,
     "sourceId": "greenville-staff",
-    "lastVerified": "2026-05-01"
+    "lastVerified": "2026-10-28"
   },
   {
     "id": "lisa-beyer",
@@ -24,7 +15,7 @@
     "department": "Finance",
     "email": null,
     "sourceId": "greenville-staff",
-    "lastVerified": "2026-05-01"
+    "lastVerified": "2026-10-28"
   },
   {
     "id": "mark-mommaerts",
@@ -33,7 +24,7 @@
     "department": "Planning",
     "email": null,
     "sourceId": "greenville-staff",
-    "lastVerified": "2026-05-01"
+    "lastVerified": "2026-10-28"
   },
   {
     "id": "elisabeth-racine",
@@ -42,7 +33,7 @@
     "department": "Building Inspection",
     "email": null,
     "sourceId": "greenville-staff",
-    "lastVerified": "2026-05-01"
+    "lastVerified": "2026-10-28"
   },
   {
     "id": "keith-curran",
@@ -51,7 +42,7 @@
     "department": "Public Works",
     "email": null,
     "sourceId": "greenville-staff",
-    "lastVerified": "2026-05-01"
+    "lastVerified": "2026-10-28"
   },
   {
     "id": "cody-simonis",
@@ -60,7 +51,7 @@
     "department": "Utilities",
     "email": null,
     "sourceId": "greenville-staff",
-    "lastVerified": "2026-05-01"
+    "lastVerified": "2026-10-28"
   },
   {
     "id": "chris-pagels",
@@ -69,7 +60,7 @@
     "department": "Utilities",
     "email": null,
     "sourceId": "greenville-staff",
-    "lastVerified": "2026-05-01"
+    "lastVerified": "2026-10-28"
   },
   {
     "id": "loren-dieck",
@@ -78,7 +69,7 @@
     "department": "Parks & Recreation",
     "email": null,
     "sourceId": "greenville-staff",
-    "lastVerified": "2026-05-01"
+    "lastVerified": "2026-10-28"
   },
   {
     "id": "eamonn-lenaghan",
@@ -87,7 +78,7 @@
     "department": "Parks & Recreation",
     "email": null,
     "sourceId": "greenville-staff",
-    "lastVerified": "2026-05-01"
+    "lastVerified": "2026-10-28"
   },
   {
     "id": "eric-kitowski",
@@ -96,7 +87,7 @@
     "department": "Fire & EMS",
     "email": null,
     "sourceId": "greenville-staff",
-    "lastVerified": "2026-05-01"
+    "lastVerified": "2026-10-28"
   },
   {
     "id": "joshua-lambie",
@@ -105,6 +96,42 @@
     "department": "Fire & EMS",
     "email": null,
     "sourceId": "greenville-staff",
-    "lastVerified": "2026-05-01"
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "brielle-hastings",
+    "name": "Brielle Hastings",
+    "title": "Deputy Clerk / Admin Assistant",
+    "department": "Administration",
+    "email": null,
+    "sourceId": "greenville-staff",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "ryan-geiger",
+    "name": "Ryan Geiger",
+    "title": "Commercial Building Inspector",
+    "department": "Building Inspection",
+    "email": null,
+    "sourceId": "greenville-staff",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "holly-arft",
+    "name": "Holly Arft",
+    "title": "Utility Billing Clerk",
+    "department": "Utilities",
+    "email": null,
+    "sourceId": "greenville-staff",
+    "lastVerified": "2026-10-28"
+  },
+  {
+    "id": "julie-routhieaux",
+    "name": "Julie Routhieaux",
+    "title": "Administrative Assistant",
+    "department": "Public Works",
+    "email": null,
+    "sourceId": "greenville-staff",
+    "lastVerified": "2026-10-28"
   }
 ]
