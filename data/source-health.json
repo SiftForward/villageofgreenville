@@ -182,5 +182,13 @@
     "reviewStatus": "registered",
     "lastReviewed": null,
     "publicNotes": "Address-lookup tool for a personal sample ballot. This site links residents to MyVote directly rather than replicating its data. No automation planned."
+  },
+  {
+    "sourceId": "wec-voter-registration",
+    "publisher": "Wisconsin Elections Commission",
+    "automationReadiness": "low",
+    "reviewStatus": "registered",
+    "lastReviewed": null,
+    "publicNotes": "Official voter registration guidance. Used for the Election Day registration note on the ballot guide. No automation planned."
   }
 ]

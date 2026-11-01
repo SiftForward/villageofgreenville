@@ -143,8 +143,12 @@ export function getBallotGuide(): BallotGuide {
   return ballotGuideData as BallotGuide
 }
 
-/** True once Election Day has passed in Central time. Pages using this re-render hourly. */
+/** Today's date in Central time as YYYY-MM-DD. Pages that use it re-render hourly. */
+export function todayChicago(): string {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago' }).format(new Date())
+}
+
+/** True once Election Day has passed in Central time. */
 export function isBallotElectionOver(): boolean {
-  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago' }).format(new Date())
-  return today > getBallotGuide().electionDate
+  return todayChicago() > getBallotGuide().electionDate
 }

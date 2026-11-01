@@ -2,7 +2,8 @@
   "electionName": "General Election",
   "electionDate": "2026-11-03",
   "candidateListUpdated": "2026-10-06",
-  "retrieved": "2026-10-27",
+  "retrieved": "2026-10-31",
+  "writeInListPublished": "2026-10-30",
   "pollsOpen": "7:00 a.m.",
   "pollsClose": "8:00 p.m.",
   "clerkPhone": "920-757-5151",
@@ -19,20 +20,29 @@
       "Monday–Thursday (October 20–29): 7:00 a.m.–4:00 p.m.",
       "Friday, October 23: 8:00 a.m.–12:00 p.m.",
       "Friday, October 30: 8:00 a.m.–5:00 p.m."
-    ]
+    ],
+    "endsOn": "2026-10-30"
   },
   "deadlines": [
     {
       "label": "Register to vote in person at the municipal clerk's office",
       "when": "Friday, October 30, 5:00 p.m. (or close of business, whichever is later)",
+      "endsOn": "2026-10-30",
       "sourceId": "wec-election-hub"
     },
     {
       "label": "Absentee ballots must be delivered to the polling place or central count location",
       "when": "Tuesday, November 3, 8:00 p.m.",
+      "endsOn": "2026-11-03",
       "sourceId": "wec-election-hub"
     }
   ],
+  "electionDayRegistration": {
+    "showAfter": "2026-10-30",
+    "heading": "Not registered yet?",
+    "body": "You can still register at your polling place on Election Day, November 3. You must bring a Proof of Residence document, which is a document that proves where you live; a paper copy or an electronic copy on a phone or tablet is accepted. You must have lived in the Village for at least 28 consecutive days before the election. You will also show photo ID before you receive a ballot. The Elections Commission's registration page lists which documents count.",
+    "sourceIds": ["wec-voter-registration", "greenville-elections"]
+  },
   "contests": [
     {
       "id": "governor-lieutenant-governor",

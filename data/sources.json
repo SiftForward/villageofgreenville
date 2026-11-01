@@ -228,5 +228,15 @@
     "monitoringMethod": null,
     "note": "Sample ballots are determined by address. This site does not collect resident addresses — link residents to MyVote directly.",
     "lastChecked": null
+  },
+  {
+    "id": "wec-voter-registration",
+    "name": "Wisconsin Elections Commission — Voter Registration and Proof of Residence",
+    "url": "https://elections.wi.gov/Register",
+    "type": "state_official_reference",
+    "trustTier": "primary_official",
+    "monitoringMethod": "manual",
+    "note": "Official guidance on how and where to register, including registering at the polling place on Election Day, and which Proof of Residence documents are accepted.",
+    "lastChecked": null
   }
 ]

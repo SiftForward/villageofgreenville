@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getBallotGuide, getSourceById, formatDate, isBallotElectionOver } from '@/lib/data'
+import { getBallotGuide, getSourceById, formatDate, isBallotElectionOver, todayChicago } from '@/lib/data'
 import SourceBadge from '@/components/SourceBadge'
 import type { BallotContest } from '@/types'
 
@@ -96,6 +96,13 @@ export default function BallotPage() {
   const outagamieResults = getSourceById('outagamie-election-results')
   const myvoteResults = getSourceById('myvote-election-results')
 
+  // Time-limited items drop off on their own once their last day has passed.
+  const today = todayChicago()
+  const earlyVotingOpen = today <= guide.inPersonAbsentee.endsOn
+  const upcomingDeadlines = guide.deadlines.filter((d) => today <= d.endsOn)
+  const edr = guide.electionDayRegistration
+  const showElectionDayRegistration = today > edr.showAfter
+
   return (
     <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
       {/* Page header */}
@@ -165,32 +172,44 @@ export default function BallotPage() {
                   <SourceLine ids={['wec-2026-general-election', 'greenville-elections']} />
                 </div>
 
-                <div className="border-t border-warm-border pt-5">
-                  <p className="font-sans text-xs font-bold uppercase tracking-wider text-warm-muted mb-1">
-                    Early (in-person absentee) voting
-                  </p>
-                  <p className="font-sans text-sm text-navy">
-                    <span className="font-semibold">{guide.inPersonAbsentee.location}</span>, {guide.inPersonAbsentee.address}
-                  </p>
-                  <ul className="font-sans text-sm text-warm-text mt-1 space-y-0.5">
-                    {guide.inPersonAbsentee.hours.map((h) => (
-                      <li key={h}>{h}</li>
-                    ))}
-                  </ul>
-                  <SourceLine ids={['greenville-elections']} />
-                </div>
+                {earlyVotingOpen && (
+                  <div className="border-t border-warm-border pt-5">
+                    <p className="font-sans text-xs font-bold uppercase tracking-wider text-warm-muted mb-1">
+                      Early (in-person absentee) voting
+                    </p>
+                    <p className="font-sans text-sm text-navy">
+                      <span className="font-semibold">{guide.inPersonAbsentee.location}</span>, {guide.inPersonAbsentee.address}
+                    </p>
+                    <ul className="font-sans text-sm text-warm-text mt-1 space-y-0.5">
+                      {guide.inPersonAbsentee.hours.map((h) => (
+                        <li key={h}>{h}</li>
+                      ))}
+                    </ul>
+                    <SourceLine ids={['greenville-elections']} />
+                  </div>
+                )}
 
-                <div className="border-t border-warm-border pt-5">
-                  <p className="font-sans text-xs font-bold uppercase tracking-wider text-warm-muted mb-1">Deadlines</p>
-                  <ul className="font-sans text-sm text-warm-text space-y-2">
-                    {guide.deadlines.map((d) => (
-                      <li key={d.label}>
-                        {d.label}: <span className="text-navy font-semibold">{d.when}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <SourceLine ids={['wec-election-hub']} />
-                </div>
+                {upcomingDeadlines.length > 0 && (
+                  <div className="border-t border-warm-border pt-5">
+                    <p className="font-sans text-xs font-bold uppercase tracking-wider text-warm-muted mb-1">Deadlines</p>
+                    <ul className="font-sans text-sm text-warm-text space-y-2">
+                      {upcomingDeadlines.map((d) => (
+                        <li key={d.label}>
+                          {d.label}: <span className="text-navy font-semibold">{d.when}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <SourceLine ids={['wec-election-hub']} />
+                  </div>
+                )}
+
+                {showElectionDayRegistration && (
+                  <div className="border-t border-warm-border pt-5">
+                    <p className="font-sans text-xs font-bold uppercase tracking-wider text-warm-muted mb-1">{edr.heading}</p>
+                    <p className="font-sans text-sm text-warm-text leading-relaxed">{edr.body}</p>
+                    <SourceLine ids={edr.sourceIds} />
+                  </div>
+                )}
 
                 <div className="border-t border-warm-border pt-5">
                   <p className="font-sans text-xs font-bold uppercase tracking-wider text-warm-muted mb-1">Photo ID and questions</p>
@@ -293,7 +312,11 @@ export default function BallotPage() {
           <div className="inset-block">
             <p className="font-sans text-sm font-semibold text-navy mb-2">About this page</p>
             <p className="font-sans text-sm text-warm-text leading-relaxed">
-              Contests, candidates and question titles are read from the Wisconsin Elections Commission&rsquo;s official contest list, last updated {formatDate(guide.candidateListUpdated)} and checked on {formatDate(guide.retrieved)}. Registered write-in candidates are listed separately by the Commission. If anything here differs from your sample ballot, the sample ballot and the official sources control.
+              Contests, candidates and question titles are read from the Wisconsin Elections Commission&rsquo;s official contest list, last updated {formatDate(guide.candidateListUpdated)} and checked on {formatDate(guide.retrieved)}. Registered write-in candidates are listed separately; the Commission published its final list on {formatDate(guide.writeInListPublished)} on its{' '}
+              <a href="https://elections.wi.gov/elections" target="_blank" rel="noopener noreferrer" className="underline underline-offset-1 hover:text-gold transition-colors">
+                2026 General Election resources page
+              </a>
+              . If anything here differs from your sample ballot, the sample ballot and the official sources control.
             </p>
           </div>
 
@@ -305,9 +328,13 @@ export default function BallotPage() {
                   {[
                     { href: MYVOTE.ballot, label: 'What’s On My Ballot' },
                     { href: MYVOTE.polling, label: 'Find My Polling Place' },
-                    { href: MYVOTE.register, label: 'Register To Vote' },
-                    { href: MYVOTE.absenteeByMail, label: 'Vote Absentee By Mail' },
-                    { href: MYVOTE.absenteeInPerson, label: 'Vote Absentee In Person' },
+                    ...(earlyVotingOpen
+                      ? [
+                          { href: MYVOTE.register, label: 'Register To Vote' },
+                          { href: MYVOTE.absenteeByMail, label: 'Vote Absentee By Mail' },
+                          { href: MYVOTE.absenteeInPerson, label: 'Vote Absentee In Person' },
+                        ]
+                      : []),
                     { href: MYVOTE.track, label: 'Track My Ballot' },
                   ].map((l) => (
                     <li key={l.href}>

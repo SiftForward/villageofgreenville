@@ -230,6 +230,8 @@ export interface BallotQuestion {
 export interface BallotDeadline {
   label: string
   when: string
+  /** Last day (YYYY-MM-DD, Central) the deadline is still shown as upcoming. */
+  endsOn: string
   sourceId: string
 }
 
@@ -245,8 +247,24 @@ export interface BallotGuide {
   pollsClose: string
   clerkPhone: string
   pollingPlace: { name: string; address: string; scope: string; note: string }
-  inPersonAbsentee: { location: string; address: string; hours: string[] }
+  /** Date the Commission published its final list of registered write-in candidates. */
+  writeInListPublished: string
+  inPersonAbsentee: {
+    location: string
+    address: string
+    hours: string[]
+    /** Last day (YYYY-MM-DD, Central) early voting is still shown as available. */
+    endsOn: string
+  }
   deadlines: BallotDeadline[]
+  /** Shown once the in-person registration deadline has passed. */
+  electionDayRegistration: {
+    /** Shown on dates after this one (YYYY-MM-DD, Central). */
+    showAfter: string
+    heading: string
+    body: string
+    sourceIds: string[]
+  }
   contests: BallotContest[]
   questions: BallotQuestion[]
   addressDependent: string[]
