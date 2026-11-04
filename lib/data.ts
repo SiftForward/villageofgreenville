@@ -143,12 +143,29 @@ export function getBallotGuide(): BallotGuide {
   return ballotGuideData as BallotGuide
 }
 
-/** Today's date in Central time as YYYY-MM-DD. Pages that use it re-render hourly. */
-export function todayChicago(): string {
-  return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago' }).format(new Date())
+/** Current date (YYYY-MM-DD) and 24-hour time (HH:MM) in Central time. */
+function nowChicago(): { date: string; time: string } {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Chicago',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  }).formatToParts(new Date())
+  const get = (type: string) => parts.find((p) => p.type === type)!.value
+  return { date: `${get('year')}-${get('month')}-${get('day')}`, time: `${get('hour')}:${get('minute')}` }
 }
 
-/** True once Election Day has passed in Central time. */
+/** Today's date in Central time as YYYY-MM-DD. Pages that use it re-render hourly. */
+export function todayChicago(): string {
+  return nowChicago().date
+}
+
+/** True once the polls have closed on Election Day (or any day after), in Central time. */
 export function isBallotElectionOver(): boolean {
-  return todayChicago() > getBallotGuide().electionDate
+  const { date, time } = nowChicago()
+  const guide = getBallotGuide()
+  return date > guide.electionDate || (date === guide.electionDate && time >= guide.pollsCloseAt)
 }

@@ -245,10 +245,12 @@ export interface BallotGuide {
   retrieved: string
   pollsOpen: string
   pollsClose: string
+  /** When the polls close, as 24-hour HH:MM Central. The page switches to the results view then. */
+  pollsCloseAt: string
   clerkPhone: string
   pollingPlace: { name: string; address: string; scope: string; note: string }
-  /** Date the Commission published its final list of registered write-in candidates. */
-  writeInListPublished: string
+  /** Date the Commission last updated its final list of registered write-in candidates. */
+  writeInListUpdated: string
   inPersonAbsentee: {
     location: string
     address: string

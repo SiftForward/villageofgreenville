@@ -312,7 +312,7 @@ export default function BallotPage() {
           <div className="inset-block">
             <p className="font-sans text-sm font-semibold text-navy mb-2">About this page</p>
             <p className="font-sans text-sm text-warm-text leading-relaxed">
-              Contests, candidates and question titles are read from the Wisconsin Elections Commission&rsquo;s official contest list, last updated {formatDate(guide.candidateListUpdated)} and checked on {formatDate(guide.retrieved)}. Registered write-in candidates are listed separately; the Commission published its final list on {formatDate(guide.writeInListPublished)} on its{' '}
+              Contests, candidates and question titles are read from the Wisconsin Elections Commission&rsquo;s official contest list, last updated {formatDate(guide.candidateListUpdated)} and checked on {formatDate(guide.retrieved)}. Registered write-in candidates are listed separately; the Commission&rsquo;s final list, last updated {formatDate(guide.writeInListUpdated)}, is on its{' '}
               <a href="https://elections.wi.gov/elections" target="_blank" rel="noopener noreferrer" className="underline underline-offset-1 hover:text-gold transition-colors">
                 2026 General Election resources page
               </a>
