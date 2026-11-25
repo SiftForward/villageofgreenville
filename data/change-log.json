@@ -1,5 +1,27 @@
 [
   {
+    "id": "chg-009",
+    "changeTitle": "Staff Directory: 5 added, 1 updated, 1 removed",
+    "sourceId": "greenville-staff",
+    "changeType": "status_updated",
+    "dateDetected": "2026-11-25",
+    "publicStatus": "published",
+    "reviewStatus": "auto_detected",
+    "summary": "Detected by the automated source check and approved for publication. Travis Parish (Administrator) is no longer listed in the Staff Directory; Katrina Knuth: “Interim Village Clerk” → “Village Clerk”; Brielle Hastings, Deputy Clerk / Admin Assistant (Administration); Jacilyn Schultz, Deputy Treasurer (Administration); Ryan Geiger, Commercial Building Inspector (Building Inspection); Holly Arft, Utility Billing Clerk (Utilities); Julie Routhieaux, Administrative Assistant (Public Works).",
+    "linkToSource": "https://www.townofgreenville.com/government/staff_directory.php"
+  },
+  {
+    "id": "chg-008",
+    "changeTitle": "Legal Notices & Postings: 52 added, 9 updated",
+    "sourceId": "greenville-legal-notices",
+    "changeType": "document_indexed",
+    "dateDetected": "2026-11-25",
+    "publicStatus": "published",
+    "reviewStatus": "auto_detected",
+    "summary": "Detected by the automated source check and approved for publication. NOTICE OF VILLAGE OF GREENVILLE PUBLIC TEST OF VOTING EQUIPMENT (document date 2026-07-13); 2027 Village of Greenville Operation Budget with Totals (document date 2026-11-13); Budget Hearing Notice 2027 (document date 2026-11-13); Resolution No. 1-26 - Developer's Agreement for 6th Addition to Savannah Heights (document date 2026-02-11); Resolution No. 3-26 - Amendment to the Project Plan and Boundaries of TID No. 1 (document date 2026-03-11); Resolution No. 4-26 - Amendment to the Project Plan and Boundaries of TID No. 1, Village of Greenville (document date 2026-03-11); Resolution No. 5-26 - Village Boardroom Use Policy (document date 2026-03-11); Resolution No. 2-26 - Approving a Planned Unit Development Concept Plan for APEX 1 on 111089006 (document date 2026-03-18); Official link added for “Resolution No. 6-26 — Adopting the Village of Greenville Comprehensive Outdoor Recreation Plan 2026–2030”; Official link added for “Resolution No. 7-26 — Approving a Special Exception for a CSM in Comprehensive Plan Tier II Parcels #111077403 and 111077402”; Official link added for “Resolution No. 8-26 — Approving a Special Exception for Home Business Located at N952 Fox Springs Drive, Parcel 111080215”; Resoltuion No. 9-26 - Approving an Amendment to a Special Exception for a Planned Unit Development for the Condos of Fox Highlands Located at Parcel 111064201 (document date 2026-04-20). …and 49 more.",
+    "linkToSource": "https://www.townofgreenville.com/government/legal_notices_and_postings.php"
+  },
+  {
     "id": "chg-007",
     "changeTitle": "Staff Directory indexed — 12 Village staff contacts across 7 departments",
     "sourceId": "greenville-staff",
